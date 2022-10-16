@@ -11,7 +11,7 @@ from database import (
 
 app = FastAPI()
 
-origins = ["https://localhost:3000"]
+origins = ["http://localhost:3000"]
 
 app.add_middleware(
     CORSMiddleware,
@@ -31,8 +31,7 @@ async def get_todo():
     response = await fetch_all_todo()
     return response
 
-
-@app.get("/api/todo{title}" response_model=Todo)
+@app.get("/api/todo{title}", response_model=Todo)
 async def get_todo_by_id(title: str):
     response = await fetch_one_todo(title)
     if response:
@@ -42,7 +41,7 @@ async def get_todo_by_id(title: str):
 
 @app.post("/api/todo", response_model=Todo)
 async def post_todo(todo:Todo):
-    response = await create_todo(todo.to_dict())
+    response = await create_todo(todo)
     if response:
         return response
     raise HTTPException(status_code=404, detail=f"Error occured")
@@ -55,7 +54,7 @@ async def put_todo_by_id(title: str, description: str):
         return response
     raise HTTPException(status_code=404, detail=f"Tdo {title} doesn't exist")
 
-@app.delete("/api/todo{title}")
+@app.delete("/api/todo/{title}")
 async def delete_todo_by_id(title: str):
     response = await remove_todo(title)
     if response:

@@ -1,14 +1,38 @@
-# farm_satck
+# FARM Stack (Fast API CRUD Project)
 This repo contains a small Fast api CRUD operations project based on FARM Satck.
-FARM is FastAPI, React & MongoDB.
+FARM is consist of FastAPI, React & MongoDB.
+
+FAST API : Backend
+React : Frontend
+MongoDB : Database
 
 
 
-Create MongoDB Cluster from mongodb.com
+# React Commands:
 
-Cluster: learningCluster
+<details>
+<summary> Frondend React Commands </summary>
+<t>
 
-Username: learning1
-Password: learning1_123
+Install npm
+`brew install npm`
+
+Creat react app
+`npx create-react-app frontend`
+
+
+Install axios (For sending req from server and getting back res)
+`npm install axios bootstrap`
+
+Start react app:
+```
+cd frondend
+npm start
+
+```
+</t>
+</details>
+
+
 
 

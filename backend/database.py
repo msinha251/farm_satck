@@ -13,13 +13,13 @@ async def fetch_one_todo(title: str):
 
 async def fetch_all_todo():
     todos = []
-    cursor = collection.find()
+    cursor = collection.find({})
     async for document in cursor:
-        todos.append(document)
+        todos.append(Todo(**document))
     return todos
 
 async def create_todo(todo: Todo):
-    document = todo
+    document = todo.dict()
     result = await collection.insert_one(document)
     return document
 
